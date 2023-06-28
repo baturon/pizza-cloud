@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<form method="POST" th:action="@{/orders}" th:object="${pizzaOrder}">
+    <h1>Данные доставки</h1>
+    <img th:width="200" th:src="@{/images/pizza.png}"/>
+    <h3>Ваш заказ</h3>
+
+    <ul>
+        <li th:each="pizza : ${pizzaOrder.pizzas}">
+            <span th:text="${pizza.name}">pizza name </span>
+            <br/>
+        </li>
+
+    </ul>
+    <a th:href="@{/selection}" id="another">Выберите другую пиццу</a>
+    <br/>
+    <br/>
+    <a th:href="@{/design}" id="design">Создайте свою пиццу</a>
+    <br/>
+    <br/>
+    <label th:for="deliveryName">Имя: </label>
+    <input type="text" field="*{deliveryName}"/>
+    <br/>
+    <label th:for="deliveryCity">Город: </label>
+    <input type="text" field="*{deliveryCity}"/>
+    <br/>
+
+    <label th:for="deliveryStreet">Улица: </label>
+    <input type="text" field="*{deliveryStreet}"/>
+    <br/>
+
+    <label th:for="deliveryTelNumber">Телефонный номер: </label>
+    <input type="text" field="*{deliveryTelNumber}"/>
+    <br/>
+    <label th:for="deliveryEmail">Email: </label>
+    <input type="text" field="*{deliveryEmail}"/>
+    <br/>
+    <br/>
+    <input type="submit" value="Подтвердите заказ"/>
+</form>
+</body>
+</html>

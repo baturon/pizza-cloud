@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pizza Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+
+<body>
+<h1>Выбор пиццы!</h1>
+<img th:src="@{/images/pizza1.jpg}"/>
+<form method="POST" th:object="${pizza}">
+    <div class="grid">
+
+        <h3>Выберите свою пиццу:</h3>
+        <div th:each="pizza : ${pizzaList}">
+            <input th:field="*{name}" type="checkbox"
+                   th:value="${pizza}"/>
+            <span th:text="${pizza}">pizza</span>
+            <br/>
+        </div>
+    </div>
+    <br/>
+
+    <div>
+        <button>Подтвердите Ваш выбор</button>
+    </div>
+
+
+</form>
+</body>
+</html>
